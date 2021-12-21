@@ -1,0 +1,84 @@
+@import "_variables.scss";
+
+.navigation {
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  padding-right: 0 !important;
+  gap: px-to-vw(20);
+  overflow-x: hidden;
+  border-right: 2px solid $main-text-color;
+  span {
+    display: block;
+    padding: px-to-vw(20);
+    position: relative;
+    font-size: px-to-vw(22);
+    text-transform: capitalize;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    &::after {
+      position: absolute;
+      content: "";
+      right: -30px;
+      top: 0;
+      bottom: 0;
+      width: 25px;
+      background: #000;
+      border-radius: 8px 0 0 8px;
+      transition: 0.3s;
+      border: 2px solid $main-text-color;
+    }
+    &[data-active="true"]::after {
+      right: -20px;
+    }
+    &:hover::after {
+      right: -10px;
+    }
+  }
+  a {
+    &:nth-child(1) span {
+      &::first-letter {
+        color: $accent-color-orange;
+      }
+      &::after {
+        background: $accent-color-orange;
+      }
+    }
+    &:nth-child(2) span {
+      &::first-letter {
+        color: $accent-color-green;
+      }
+      &::after {
+        background: $accent-color-green;
+      }
+    }
+    &:nth-child(3) span {
+      &::first-letter {
+        color: $accent-color-blue;
+      }
+      &::after {
+        background: $accent-color-blue;
+      }
+    }
+    &:nth-child(4) span {
+      &::first-letter {
+        color: $accent-color-yellow;
+      }
+      &::after {
+        background: $accent-color-yellow;
+      }
+    }
+    &:nth-child(5) span {
+      &::first-letter {
+        color: $accent-color-purple;
+      }
+      &::after {
+        background: $accent-color-purple;
+      }
+    }
+  }
+}

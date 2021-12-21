@@ -17,6 +17,11 @@ textarea {
   font-family: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   height: 100vh;
   background: $main-background;
@@ -25,7 +30,7 @@ body {
 
 #root {
   display: grid;
-  grid-template-columns: 15% 1fr 25%;
+  grid-template-columns: 17% 1fr 25%;
   height: 100vh;
   overflow: hidden;
   > * {
