@@ -1,0 +1,11 @@
+@function px-to-vw($px, $screen: 1920) {
+  @return 100 * $px / $screen + vw;
+}
+
+$main-background:       #f1f6fa;
+$main-text-color:       #222;
+
+$accent-color-yellow:   #FAE451;
+$accent-color-puple:    #C1BEFA;
+$accent-color-green:    #7EE7D6;
+$accent-color-orange:   #FF844B;

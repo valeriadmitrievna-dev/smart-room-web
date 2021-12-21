@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+@import "_variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comfortaa", sans-serif;
+  outline: none;
+}
+
+input,
+button,
+textarea {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+body {
+  height: 100vh;
+  background: $main-background;
+  color: $main-text-color;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 15% 1fr 25%;
+  height: 100vh;
+  overflow: hidden;
+  > * {
+    padding: px-to-vw(20);
+  }
+}
