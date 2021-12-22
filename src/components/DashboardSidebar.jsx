@@ -18,7 +18,6 @@ export default function DashboardSidebar() {
       const { data } = await axios.get(
         `https://fcc-weather-api.glitch.me/api/current?lat=${coords.lat}&lon=${coords.lng}`
       );
-      console.log(data);
       setWeather(data);
     } catch (error) {
       console.log(error.message);
@@ -78,10 +77,10 @@ export default function DashboardSidebar() {
         </div>
       </div>
       <div className={s.section + " " + s.weather}>
-        {!!weather && (
-          <>
-            <h4>Weather</h4>
-            <div>
+        <h4>Weather</h4>
+        <div>
+          {!!weather && (
+            <>
               <header>
                 <h5>{weather.name}</h5>
                 <span>
@@ -131,9 +130,9 @@ export default function DashboardSidebar() {
                   }
                 </span>
               </section>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
