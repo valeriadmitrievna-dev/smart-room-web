@@ -5,8 +5,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Comfortaa", sans-serif;
   outline: none;
+  user-select: none;
 }
 
 input,
@@ -22,18 +22,29 @@ a {
   color: inherit;
 }
 
+img {
+  display: block;
+  width: 100%;
+}
+
 body {
   height: 100vh;
   background: $main-background;
   color: $main-text-color;
+  letter-spacing: 0.05em;
+  font-family: "Comfortaa", sans-serif;
 }
 
 #root {
   display: grid;
-  grid-template-columns: 17% 1fr 25%;
+  grid-template-columns: 17% 1fr;
   height: 100vh;
   overflow: hidden;
   > * {
     padding: px-to-vw(20);
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

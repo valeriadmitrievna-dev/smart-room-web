@@ -1,0 +1,163 @@
+@import "_variables.scss";
+
+@keyframes live {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 30%;
+  padding: 0 !important;
+  .side {
+    height: 100vh;
+    overflow-y: auto;
+    padding: px-to-vw(20);
+    border-left: 2px solid $main-text-color;
+    background: rgba($accent-color-orange, 0.9);
+    .live {
+      margin: 0 auto;
+      width: px-to-vw(350);
+      height: px-to-vw(220);
+      overflow: hidden;
+      border-radius: px-to-vw(16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $main-text-color;
+      color: #fff;
+      font-size: px-to-vw(20);
+      background-image: url(https://thumbs.gfycat.com/RashPortlyGnu-max-1mb.gif);
+      background-size: cover;
+      position: relative;
+			border: 2px solid $main-text-color;
+      > p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: px-to-vw(15) px-to-vw(20);
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        font-size: px-to-vw(14);
+        span {
+          display: inline-block;
+          width: px-to-vw(10);
+          height: px-to-vw(10);
+          border-radius: 50%;
+          background: $accent-color-orange;
+          margin-right: px-to-vw(20);
+          animation: live 0.7s infinite linear alternate;
+        }
+      }
+    }
+    .section {
+      width: 100%;
+      margin-top: px-to-vw(50);
+      h4 {
+        margin-bottom: px-to-vw(16);
+        font-size: px-to-vw(22);
+        margin-left: px-to-vw(20);
+      }
+      > div {
+        background: #fff;
+        padding: px-to-vw(20);
+        border-radius: px-to-vw(16);
+        border: 2px solid $main-text-color;
+      }
+      .members {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: px-to-vw(20);
+        .member {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          > div {
+            width: px-to-vw(70);
+            height: px-to-vw(70);
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid $main-text-color;
+            // background: rgba($accent-color-orange, 0.75);
+            margin-bottom: px-to-vw(10);
+            box-sizing: content-box;
+            img {
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          span {
+            font-size: px-to-vw(18);
+            text-transform: capitalize;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .weather {
+      min-height: px-to-vw(310);
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        h5 {
+          font-size: px-to-vw(22);
+        }
+        span {
+          font-size: px-to-vw(18);
+          font-weight: bold;
+          color: #00000080;
+        }
+        margin-bottom: px-to-vw(20);
+      }
+      main {
+        display: flex;
+        align-items: center;
+        gap: px-to-vw(20);
+        ion-icon {
+          font-size: px-to-vw(80);
+          color: $accent-color-orange;
+        }
+        h5 {
+          font-size: px-to-vw(26);
+          margin-bottom: px-to-vw(5);
+          color: $accent-color-orange;
+        }
+        h6 {
+          font-size: px-to-vw(16);
+        }
+      }
+      section {
+        margin-top: px-to-vw(20);
+        display: flex;
+        align-items: center;
+        gap: px-to-vw(10);
+        font-weight: bold;
+				font-size: px-to-vw(20);
+        ion-icon {
+          font-size: px-to-vw(30);
+          color: $accent-color-orange;
+          &.wind {
+            margin-left: px-to-vw(20);
+          }
+        }
+        svg {
+          width: px-to-vw(30);
+          height: px-to-vw(25);
+          path {
+            stroke: $accent-color-orange;
+          }
+        }
+        span {
+          margin-left: px-to-vw(20);
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
