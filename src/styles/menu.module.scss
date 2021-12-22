@@ -11,69 +11,80 @@
   gap: px-to-vw(20);
   overflow-x: hidden;
   border-right: 2px solid $main-text-color;
-  span {
-    display: block;
+  p {
+    display: flex;
+    align-items: center;
+    gap: px-to-vw(10);
     padding: px-to-vw(20);
     position: relative;
-    font-size: px-to-vw(22);
+    font-size: px-to-vw(20);
     text-transform: capitalize;
     font-weight: bold;
     letter-spacing: 0.05em;
     cursor: pointer;
+    ion-icon {
+      font-size: px-to-vw(25);
+      margin-bottom: px-to-vw(3);
+    }
     &::after {
       position: absolute;
       content: "";
-      right: -30px;
+      right: px-to-vw(-50);
       top: 0;
       bottom: 0;
-      width: 25px;
+      width: px-to-vw(25);
       background: #000;
-      border-radius: 8px 0 0 8px;
+      border-radius: px-to-vw(8) 0 0 px-to-vw(8);
       transition: 0.3s;
       border: 2px solid $main-text-color;
     }
     &[data-active="true"]::after {
-      right: -20px;
+      right: px-to-vw(-20);
     }
     &:hover::after {
-      right: -10px;
+      right: px-to-vw(-10);
     }
   }
   a {
-    &:nth-child(1) span {
-      &::first-letter {
+    &:nth-child(1) p {
+      span::first-letter,
+      ion-icon {
         color: $accent-color-orange;
       }
       &::after {
         background: $accent-color-orange;
       }
     }
-    &:nth-child(2) span {
-      &::first-letter {
+    &:nth-child(2) p {
+      span::first-letter,
+      ion-icon {
         color: $accent-color-green;
       }
       &::after {
         background: $accent-color-green;
       }
     }
-    &:nth-child(3) span {
-      &::first-letter {
+    &:nth-child(3) p {
+      span::first-letter,
+      ion-icon {
         color: $accent-color-blue;
       }
       &::after {
         background: $accent-color-blue;
       }
     }
-    &:nth-child(4) span {
-      &::first-letter {
+    &:nth-child(4) p {
+      span::first-letter,
+      ion-icon {
         color: $accent-color-yellow;
       }
       &::after {
         background: $accent-color-yellow;
       }
     }
-    &:nth-child(5) span {
-      &::first-letter {
+    &:nth-child(5) p {
+      span::first-letter,
+      ion-icon {
         color: $accent-color-purple;
       }
       &::after {
