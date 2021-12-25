@@ -36,7 +36,7 @@
       background: #000;
       border-radius: px-to-vw(8) 0 0 px-to-vw(8);
       transition: 0.3s;
-      border: 2px solid $main-text-color;
+      border: 2px dashed $main-text-color;
     }
     &[data-active="true"]::after {
       right: px-to-vw(-20);

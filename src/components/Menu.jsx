@@ -1,5 +1,5 @@
 import React from "react";
-import s from "@styles/menu.module.scss";
+import s from "~styles/menu.module.scss";
 import { Link, useLocation } from "react-router-dom";
 
 const routes = [

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useTime } from "react-timer-hook";
-import s from "@/styles/dashboard.module.scss";
+import s from "~/styles/dashboard.module.scss";
 
 const roomCoords = {
   lat: 47.2049529,
@@ -81,7 +81,7 @@ export default function DashboardSidebar() {
         <div>
           {!!weather && (
             <>
-              <header>
+              <header className={s.side_header}>
                 <h5>{weather.name}</h5>
                 <span>
                   {hours}:{minutes > 9 ? minutes : "0" + minutes}

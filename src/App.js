@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Menu from "@/components/Menu";
-import Dashboard from "@/pages/Dashboard";
+import Menu from "~/components/Menu";
+import Dashboard from "~/pages/Dashboard";
 
 function App() {
   return (
