@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import CustomTooltip from '~/components/CustomTooltip'
 
 const greeting = (hours, ampm, name) => {
   if (ampm === "am" && hours >= 6)
@@ -39,20 +40,7 @@ const greeting = (hours, ampm, name) => {
   );
 };
 
-const CustomTooltip = ({ active, payload, prefix }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className={s.tooltip}>
-        <span>{format(new Date(payload[0].payload.date), "H:mm")}</span>
-        <p>
-          {payload[0].value}
-          {prefix}
-        </p>
-      </div>
-    );
-  }
-  return null;
-};
+
 
 export default function DashboardLayout({ data }) {
   const { hours, ampm } = useTime({ format: "12-hour" });
@@ -64,38 +52,41 @@ export default function DashboardLayout({ data }) {
           <p>Have a nice day!</p>
         </header>
         <main>
-          {Object.entries(data).map(([type, info], id) => (
-            <div key={id}>
-              <header className={s.graph_header}>
-                <Link to={`/dashboard/${type}`}>
-                  <p>{type}</p>
-                </Link>
-                <span>
-                  {info.data[info.data.length - 1]?.value}
-                  {info.prefix}
-                </span>
-              </header>
-              <ResponsiveContainer height={200}>
-                <LineChart data={info.data.slice(-10)}>
-                  <Tooltip
-                    cursor={{ stroke: "rgba(0,0,0,0.25)", strokeWidth: 2 }}
-                    content={<CustomTooltip prefix={info.prefix} />}
-                  />
-                  <CartesianGrid
-                    stroke="rgba(0,0,0,0.25)"
-                    strokeDasharray="4"
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#000"
-                    strokeWidth={2}
-                    activeDot={{ r: 5 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          ))}
+          {Object.entries(data).map(
+            ([type, info], id) =>
+              !!info.data.length && (
+                <div key={id}>
+                  <header className={s.graph_header}>
+                    <Link to={`/dashboard/${type}`}>
+                      <p>{type}</p>
+                    </Link>
+                    <span>
+                      {info.data[info.data.length - 1]?.value}
+                      {info.prefix}
+                    </span>
+                  </header>
+                  <ResponsiveContainer height={200}>
+                    <LineChart data={info.data}>
+                      <Tooltip
+                        cursor={{ stroke: "rgba(0,0,0,0.25)", strokeWidth: 2 }}
+                        content={<CustomTooltip prefix={info.prefix} />}
+                      />
+                      <CartesianGrid
+                        stroke="rgba(0,0,0,0.25)"
+                        strokeDasharray="4"
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="value"
+                        stroke="#000"
+                        strokeWidth={2}
+                        activeDot={{ r: 5 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              )
+          )}
         </main>
       </div>
       <DashboardSidebar />

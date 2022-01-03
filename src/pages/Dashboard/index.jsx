@@ -1,41 +1,54 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addOnePoint } from "~/redux/graph";
 import DashboardLayout from "./index.layout";
-
-const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+import db from "~/firebase";
+import { onSnapshot, collection, query, orderBy } from "firebase/firestore";
+import { format } from "date-fns";
+import { updateHumidity, updateTemperature } from "../../redux/graph";
 
 export default function Dashboard() {
   const data = useSelector(state => state.graph);
   const dispatch = useDispatch();
+  const [stats, setStats] = useState([]);
 
   useEffect(() => {
-    const updateDataStatic = () => {
-      dispatch(
-        addOnePoint({
-          temperature: {
-            date: new Date(),
-            value: random(-10, 5),
-          },
-          humidity: {
-            date: new Date(),
-            value: random(20, 60),
-          },
-          illumination: {
-            date: new Date(),
-            value: random(150, 300),
-          },
-          hydrocarbons: {
-            date: new Date(),
-            value: random(75, 130),
-          },
-        })
-      );
-    };
-    updateDataStatic();
-    const updateData = setInterval(updateDataStatic, 1000);
+    // listen temperature
+    const unsub_temp = onSnapshot(
+      query(collection(db, "temperature"), orderBy("date")),
+      querySnapshot => {
+        dispatch(
+          updateTemperature(
+            querySnapshot.docs
+              .map(item => ({
+                id: item.id,
+                value: item.data().value,
+                date: format(item.data().date.toDate(), "dd.MM.yyyy H:mm:ss"),
+              }))
+              .slice(-10)
+          )
+        );
+      }
+    );
+    // listen humidity
+    const unsub_humid = onSnapshot(
+      query(collection(db, "humidity"), orderBy("date")),
+      querySnapshot => {
+        dispatch(
+          updateHumidity(
+            querySnapshot.docs
+              .map(item => ({
+                id: item.id,
+                value: item.data().value,
+                date: format(item.data().date.toDate(), "dd.MM.yyyy H:mm:ss"),
+              }))
+              .slice(-10)
+          )
+        );
+      }
+    );
     return () => {
-      clearInterval(updateData);
+      unsub_temp();
+      unsub_humid();
     };
   }, []);
 

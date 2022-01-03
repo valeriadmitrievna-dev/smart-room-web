@@ -11,25 +11,17 @@ const graphSlice = createSlice({
       prefix: "%",
       data: [],
     },
-    illumination: {
-      prefix: " lux",
-      data: [],
-    },
-    hydrocarbons: {
-      prefix: " ppm",
-      data: [],
-    },
   },
   reducers: {
-    addOnePoint: (state, { payload }) => {
-      state.temperature.data.push(payload.temperature);
-      state.humidity.data.push(payload.humidity);
-      state.illumination.data.push(payload.illumination);
-      state.hydrocarbons.data.push(payload.hydrocarbons);
+    updateTemperature: (state, { payload }) => {
+      state.temperature.data = payload;
+    },
+    updateHumidity: (state, { payload }) => {
+      state.humidity.data = payload;
     },
   },
 });
 
 const graphReducer = graphSlice.reducer;
-export const { addOnePoint } = graphSlice.actions;
+export const { updateTemperature, updateHumidity } = graphSlice.actions;
 export default graphReducer;

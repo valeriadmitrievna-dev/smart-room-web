@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Menu from "~/components/Menu";
 import Dashboard from "~/pages/Dashboard";
+import Details from "~/pages/Details";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Menu />
       <Routes>
         <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/dashboard/:type" element={<Details />} />
         <Route exact path="/members" element={<div>members</div>} />
         <Route exact path="/chat" element={<div>chat</div>} />
         <Route exact path="/devices" element={<div>devices</div>} />

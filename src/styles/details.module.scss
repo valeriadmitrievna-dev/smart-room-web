@@ -1,0 +1,15 @@
+@import "_variables.scss";
+
+.title {
+  font-size: px-to-vw(32);
+  line-height: px-to-vw(68);
+  text-transform: capitalize;
+  margin-bottom: px-to-vw(20);
+}
+
+.chart_container {
+  padding: px-to-vw(20);
+  border-radius: px-to-vw(10);
+  background: $accent-color-orange;
+  width: 100%;
+}

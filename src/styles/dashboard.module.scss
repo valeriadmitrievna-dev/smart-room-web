@@ -217,11 +217,17 @@
   font-size: px-to-vw(20);
   background: #000;
   color: #fff;
-  border-radius: px-to-vw(4);
+  border-radius: px-to-vw(8);
   line-height: 150%;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   span {
     font-size: px-to-vw(16);
     line-height: 1;
+    &:first-child {
+      margin-bottom: px-to-vw(5);
+    }
   }
 }
