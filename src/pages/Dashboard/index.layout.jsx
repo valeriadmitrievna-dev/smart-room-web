@@ -9,10 +9,11 @@ import {
   LineChart,
   ResponsiveContainer,
   Tooltip,
+  YAxis,
 } from "recharts";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import CustomTooltip from '~/components/CustomTooltip'
+import CustomTooltip from "~/components/CustomTooltip";
 
 const greeting = (hours, ampm, name) => {
   if (ampm === "am" && hours >= 6)
@@ -40,8 +41,6 @@ const greeting = (hours, ampm, name) => {
   );
 };
 
-
-
 export default function DashboardLayout({ data }) {
   const { hours, ampm } = useTime({ format: "12-hour" });
   return (
@@ -57,9 +56,7 @@ export default function DashboardLayout({ data }) {
               !!info.data.length && (
                 <div key={id}>
                   <header className={s.graph_header}>
-                    <Link to={`/dashboard/${type}`}>
-                      <p>{type}</p>
-                    </Link>
+                    <p>{type}</p>
                     <span>
                       {info.data[info.data.length - 1]?.value}
                       {info.prefix}
@@ -71,6 +68,7 @@ export default function DashboardLayout({ data }) {
                         cursor={{ stroke: "rgba(0,0,0,0.25)", strokeWidth: 2 }}
                         content={<CustomTooltip prefix={info.prefix} />}
                       />
+                      <YAxis hide domain={["dataMin - 1", "dataMax + 1"]} />
                       <CartesianGrid
                         stroke="rgba(0,0,0,0.25)"
                         strokeDasharray="4"

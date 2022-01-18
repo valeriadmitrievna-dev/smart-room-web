@@ -13,3 +13,46 @@
   background: $accent-color-orange;
   width: 100%;
 }
+
+.chart_legends {
+  display: flex;
+  align-items: center;
+  gap: px-to-vw(30);
+  margin-bottom: px-to-vw(10);
+  div {
+    display: flex;
+    align-items: center;
+    gap: px-to-vw(10);
+    font-size: px-to-vw(18);
+    span {
+      display: block;
+      width: px-to-vw(75);
+      height: px-to-vw(2);
+    }
+  }
+}
+
+.filters_container {
+  display: flex;
+  align-items: center;
+  gap: px-to-vw(20);
+  margin-bottom: px-to-vw(20);
+  button {
+    cursor: pointer;
+    padding: px-to-vw(10) px-to-vw(15);
+    background: $main-gray;
+    border-radius: px-to-vw(5);
+    font-weight: bold;
+    transition: .3s;
+    font-size: px-to-vw(18);
+    &.active {
+      background: $accent-color-orange;
+      color: $main-background;
+    }
+  }
+}
+
+.tick {
+  font-size: px-to-vw(14);
+  font-weight: bold;
+}

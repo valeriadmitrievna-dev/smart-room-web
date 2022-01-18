@@ -19,9 +19,13 @@ const graphSlice = createSlice({
     updateHumidity: (state, { payload }) => {
       state.humidity.data = payload;
     },
+    updateStat: (state, { payload }) => {
+      state[payload.type].data = payload.data;
+    },
   },
 });
 
 const graphReducer = graphSlice.reducer;
-export const { updateTemperature, updateHumidity } = graphSlice.actions;
+export const { updateTemperature, updateHumidity, updateStat } =
+  graphSlice.actions;
 export default graphReducer;

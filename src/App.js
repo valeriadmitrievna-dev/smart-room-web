@@ -9,9 +9,7 @@ function App() {
       <Menu />
       <Routes>
         <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/dashboard/:type" element={<Details />} />
-        <Route exact path="/members" element={<div>members</div>} />
-        <Route exact path="/chat" element={<div>chat</div>} />
+        <Route exact path="/details" element={<Details />} />
         <Route exact path="/devices" element={<div>devices</div>} />
         <Route exact path="/settings" element={<div>settings</div>} />
         <Route exact path="*" element={<Navigate to="/dashboard" replace />} />

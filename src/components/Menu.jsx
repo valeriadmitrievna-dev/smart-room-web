@@ -8,12 +8,8 @@ const routes = [
     icon: "apps-outline",
   },
   {
-    path: "members",
-    icon: "people-outline",
-  },
-  {
-    path: "chat",
-    icon: "chatbubble-outline",
+    path: "details",
+    icon: "stats-chart-outline",
   },
   {
     path: "devices",
@@ -30,8 +26,8 @@ export default function Menu() {
 
   return (
     <nav className={s.navigation}>
-      {routes.map(route => (
-        <Link to={`/${route.path}`}>
+      {routes.map((route, id) => (
+        <Link to={`/${route.path}`} key={id}>
           <p data-active={pathname.startsWith(route.path)}>
             <ion-icon name={route.icon}></ion-icon>
             <span>{route.path}</span>

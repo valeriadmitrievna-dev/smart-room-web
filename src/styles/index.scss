@@ -48,3 +48,22 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+span#temperature {
+  background: $accent-color-yellow;
+}
+p#temperature {
+  color: $accent-color-yellow;
+}
+path#temperature.recharts-curve.recharts-area-curve {
+  stroke: $accent-color-yellow;
+}
+span#humidity {
+  background: $accent-color-blue;
+}
+p#humidity {
+  color: $accent-color-blue;
+}
+path#humidity.recharts-curve.recharts-area-curve {
+  stroke: $accent-color-blue;
+}

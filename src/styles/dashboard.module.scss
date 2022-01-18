@@ -226,8 +226,9 @@
   span {
     font-size: px-to-vw(16);
     line-height: 1;
-    &:first-child {
-      margin-bottom: px-to-vw(5);
-    }
+    margin-bottom: px-to-vw(5);
+  }
+  p {
+    margin: 0;
   }
 }

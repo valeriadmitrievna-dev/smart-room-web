@@ -24,7 +24,7 @@ export default function Dashboard() {
                 value: item.data().value,
                 date: format(item.data().date.toDate(), "dd.MM.yyyy H:mm:ss"),
               }))
-              .slice(-10)
+              .slice(-12)
           )
         );
       }
@@ -41,7 +41,7 @@ export default function Dashboard() {
                 value: item.data().value,
                 date: format(item.data().date.toDate(), "dd.MM.yyyy H:mm:ss"),
               }))
-              .slice(-10)
+              .slice(-12)
           )
         );
       }
